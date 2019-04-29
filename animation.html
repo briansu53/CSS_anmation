@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 
+         注意:動畫要先設定position 
+         step1: 先設定元素的基本樣式
+         step2: 想好動畫效果
+         上下左右移動:animation設定 left、right、top、bottom
+         旋轉、縮放等 用 transform
+         step3: 設定動畫class
+         這裡DOM操作，classList.add，在原來的元素添加標前來達到效果
+         animation名稱設定，對應@keyframes
+         step4 設定@keyframes 設計動畫
+         step5 設定DOM click事件
+         藉由點擊事件，添加新的class來使css變化並產生動畫效果
+         */
+
+        .box1{
+            width: 100vw;
+            height: 90vh;
+            background-color: rgb(134, 14, 14);
+
+        }
+        .move_box{
+            position: relative;
+            transform: rotate(0deg);
+            background-color: rgb(134, 14, 14);
+
+            animation-name: move;
+            animation-duration: 50s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes move{
+            from{
+                transform: rotate(0deg);
+                background-color: rgb(134, 14, 14);
+            }
+            to{
+                transform: rotate(360deg);
+                background-color: rgb(216, 86, 86);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="box1" class="box1"></div>
+    <button id='btn'>click</button>
+</body>
+    <script>
+        let get_box1 = document.getElementById('box1');
+        let get_btn = document.getElementById('btn');
+        get_btn.addEventListener('click', function(){
+            get_box1.classList.add('move_box');
+        });
+    </script>
+</html>
